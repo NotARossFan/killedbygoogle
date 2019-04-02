@@ -81,7 +81,18 @@ export default class App extends Component {
       </div>
     );
 
-    const Slug = props => <div>{props.slug}</div>;
+    const Slug = (props) => {
+      const item = fullList.find(element => element.slug === props.slug);
+      document.title = `${item.name} - Killed by Google`;
+      const singleStyles = {
+        paddingTop: '40px',
+      };
+      return (
+        <div style={singleStyles}>
+          <List items={[item]} />
+        </div>
+      );
+    };
 
     return (
       <div>
@@ -90,9 +101,11 @@ export default class App extends Component {
             {'Missing an Obituary? We\'re Open Source.'}
           </a>
           <Link to="/help">Help</Link>
-          <Link to="/google-tag-manager">Help</Link>
+          <Link to="/google-allo">Help</Link>
         </BannerMessage>
-        <Header />
+        <Link to="/">
+          <Header />
+        </Link>
         <Router>
           <Slug path=":slug" />
           <TheList path="/" default />
