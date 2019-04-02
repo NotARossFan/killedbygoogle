@@ -53,6 +53,7 @@ module.exports = (env, argv) => {
         { from: './src/assets/favicon.png', to: './assets' },
         { from: './src/service-worker.js', to: './' },
         { from: './src/index.html', to: './' },
+        { from: './src/_redirects', to: './' },
       ]),
     ],
     devServer: {

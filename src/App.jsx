@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import PropTypes from 'prop-types';
+import { Router, Link } from '@reach/router';
 
 // Global CSS (e.g. body)
 import './global.scss';
@@ -71,17 +72,31 @@ export default class App extends Component {
       term,
       fullList,
     } = this.state;
+
+    const TheList = () => (
+      <div>
+        <Search search={this.searchFilter} term={term} />
+        <Filter current={activeFilter} filterHandler={this.setFilter} items={fullList} />
+        <List items={listOfItems} />
+      </div>
+    );
+
+    const Slug = props => <div>{props.slug}</div>;
+
     return (
       <div>
         <BannerMessage>
           <a href="https://github.com/codyogden/killedbygoogle/issues">
             {'Missing an Obituary? We\'re Open Source.'}
           </a>
+          <Link to="/help">Help</Link>
+          <Link to="/google-tag-manager">Help</Link>
         </BannerMessage>
         <Header />
-        <Search search={this.searchFilter} term={term} />
-        <Filter current={activeFilter} filterHandler={this.setFilter} items={fullList} />
-        <List items={listOfItems} />
+        <Router>
+          <Slug path=":slug" />
+          <TheList path="/" default />
+        </Router>
         <Footer />
       </div>
     );
