@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { format, formatDistance, parseISO } from 'date-fns';
 import styled from 'styled-components';
 
+import updateMeta from './updateMeta';
+
 import Tombstone from './assets/tombstone.svg';
 import Guillotine from './assets/guillotine.svg';
 
@@ -40,6 +42,12 @@ const IconContainer = styled.div`
 `;
 
 export default class SingleItem extends Component {
+  componentWillMount() {
+    const { ...grave } = this.props;
+    document.title = `${grave.name}: ${format(parseISO(grave.dateOpen), 'yyyy')} - ${format(parseISO(grave.dateClose), 'yyyy')}`;
+    updateMeta(grave);
+  }
+
   getIcon() {
     return (this.isPast()) ? <Icon src={Tombstone} alt="Tombstone" /> : <Icon src={Guillotine} alt="Guillotine" />;
   }
@@ -75,6 +83,7 @@ export default class SingleItem extends Component {
       </span>
     );
   }
+
 
   render() {
     const { ...grave } = this.props;

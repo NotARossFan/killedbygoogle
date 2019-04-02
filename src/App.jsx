@@ -33,7 +33,6 @@ export default class App extends Component {
 
     const Slug = (props) => {
       const item = data.find(element => element.slug === props.slug);
-      document.title = `${item.name} - Killed by Google`;
       const FlexBoxOuter = styled.div`
         display: block;
         justify-content: center;
