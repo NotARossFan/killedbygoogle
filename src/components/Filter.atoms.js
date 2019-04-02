@@ -28,10 +28,18 @@ export const ListItem = styled.li`
     min-width: 40px;
     padding: 10px 10px;
     text-align: center;
-  }
-  &.active {
-    button {
-      font-weight: bold;
+    &:hover {
+      background-color: #D6D6D6;
     }
   }
+  &.active button {
+    border-radius: 3px;
+    background-color: #ECECEC;
+    &:hover {
+      background-color: #D6D6D6;
+    }
+  }
+`;
+
+export const FilterBtn = styled.button`
 `;

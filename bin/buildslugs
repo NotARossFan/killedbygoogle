@@ -5,8 +5,8 @@ const fs = require('fs');
 const data = require('../graveyard.json');
 
 slugify.extend({
-  '+': 'plus',
-  '@': 'at',
+  '+': '-plus',
+  '@': '-at',
 });
 
 data.map((item) => {

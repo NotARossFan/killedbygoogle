@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ListItem } from './Filter.atoms';
+import { ListItem, FilterBtn } from './Filter.atoms';
 
 const FilterItem = (props) => {
   const {
@@ -13,13 +13,13 @@ const FilterItem = (props) => {
   } = props;
   return (
     <ListItem className={(active) ? 'active' : 'inactive'}>
-      <button onClick={() => { clickHandler(item[1], index); }} type="button">
+      <FilterBtn onClick={() => { clickHandler(item[1], index); }} type="button">
         {item[0]}
         {' '}
         (
         {counts[index]}
         )
-      </button>
+      </FilterBtn>
     </ListItem>
   );
 };

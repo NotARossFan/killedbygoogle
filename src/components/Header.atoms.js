@@ -30,3 +30,13 @@ export const Title = styled.h1`
     font-size: 1.75em;
   }
 `;
+
+export const Title2 = styled.h2`
+  font-weight: lighter;
+  text-align: center;
+  margin: 0;
+  font-size: 2em;
+  @media screen and ( max-width: 600px ) {
+    font-size: 1.75em;
+  }
+`;
