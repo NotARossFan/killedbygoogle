@@ -133,9 +133,10 @@ fetch('graveyard.json')
   });
 
 if ('serviceWorker' in navigator) {
+  const { info, error } = console;
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./service-worker.js', { scope: './' })
-      .then(registration => console.info('Service worker registered successfully: ', registration))
-      .catch(error => console.error('Service worker registration failed: ', error));
+      .then(registration => info('Service worker registered successfully: ', registration))
+      .catch(err => error('Service worker registration failed: ', err));
   });
 }
